@@ -3,6 +3,8 @@
 #pragma once
 
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "GameFramework/Actor.h"
+
 #include "EasyMathBPLibrary.generated.h"
 
 /* 
@@ -27,6 +29,16 @@ class UEasyMathBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "EasyMath sample test testing"), Category = "EasyMathTesting")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "EasyMath sample test testing"), Category = "EasyMath|Testing")
 	static float EasyMathSampleFunction(float Param);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Easy Math Translate", Keywords = "EasyMath Translate"), Category = "EasyMath|Translate")
+	static FVector EasyMathTranslateFunction(AActor* actor , FVector VecIn, FVector Source = FVector::ZeroVector);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Easy Math Rotate", Keywords = "EasyMath Translate"), Category = "EasyMath|Rotate")
+	static FRotator EasyMathRotateFunction(AActor* actor , FVector VecIn, FVector Source = FVector::ZeroVector);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Easy Math Scale", Keywords = "EasyMath Translate"), Category = "EasyMath|Rotate")
+	static FVector EasyMathScaleFunction(AActor* actor , FVector VecIn, FVector Source = FVector(1,1,1));
 };
+
