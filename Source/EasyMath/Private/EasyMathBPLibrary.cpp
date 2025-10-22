@@ -1,8 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "EasyMathBPLibrary.h"
 #include "EasyMath.h"
-#include "EasyMath/include/EasyMath.h"
+#include "EasyMathBPLibrary.h"
+#include "EasyMath/EasyMath/include/EasyMath.h"
 
 UEasyMathBPLibrary::UEasyMathBPLibrary(const FObjectInitializer& ObjectInitializer)
 : Super(ObjectInitializer)

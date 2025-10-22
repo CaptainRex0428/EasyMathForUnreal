@@ -1,6 +1,0 @@
-#include "/Engine/Private/Common.ush"
-
-half3 ShaderTest()
-{
-	return half3(0.5,0,1);
-}

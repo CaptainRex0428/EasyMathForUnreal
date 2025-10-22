@@ -10,6 +10,8 @@ public class EasyMath : ModuleRules
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
+				// System.IO.Path.GetFullPath(Target.RelativeEnginePath) + "/Shaders"
+				System.IO.Path.GetFullPath(Target.RelativeEnginePath) + "/Source/EasyMath/EasyMath/include"
 				// ... add public include paths required here ...
 			}
 			);
@@ -26,6 +28,9 @@ public class EasyMath : ModuleRules
 			new string[]
 			{
 				"Core",
+				"RenderCore",
+				"Renderer",
+				"RHI"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -38,6 +43,7 @@ public class EasyMath : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"Projects"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
