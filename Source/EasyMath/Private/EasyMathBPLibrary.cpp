@@ -33,20 +33,32 @@ FVector UEasyMathBPLibrary::EasyMathTranslateFunction(AActor* actor , FVector Ve
 	return NewLocation;
 }
 
-FRotator UEasyMathBPLibrary::EasyMathRotateFunction(AActor* actor, FVector VecIn, FVector Source)
+FVector UEasyMathBPLibrary::EasyMathRotateFunction(AActor* actor, FVector VecIn, FVector Source)
 {
 	if (!actor)
 	{
-		return FRotator::ZeroRotator; // 安全检查
+		return FVector::ZeroVector; // 安全检查
 	}
 
-	FVector NewV = VecIn + Source;
-	
-	FRotator NewRotator(NewV[0], NewV[1], NewV[2]);
-	
-	actor->SetActorRotation(NewRotator);
+	auto mx = EM::MTXRotationX(VecIn[0]);
+	auto my = EM::MTXRotationY(VecIn[1]);
+	auto mz = EM::MTXRotationZ(VecIn[2]);
 
-	return NewRotator;
+	auto mt = EM::MTXTranslation(Source[0],Source[1],Source[2]);
+
+	auto m = mt * mx * my * mz * mt.inverse<>();
+
+	FVector oo = actor->GetActorLocation();
+	
+	EM::Vector<double,4> o = EM::Vector<double,4>{oo[0], oo[1], oo[2], 1};
+	
+	EM::Matrix<double,4, 1> location = m * o;
+	
+	FVector NewLocation(location[0], location[1], location[2]);
+	
+	actor->SetActorLocation(NewLocation);
+	
+	return NewLocation;
 }
 
 FVector UEasyMathBPLibrary::EasyMathScaleFunction(AActor* actor, FVector VecIn, FVector Source)

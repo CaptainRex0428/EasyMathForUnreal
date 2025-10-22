@@ -36,7 +36,7 @@ class UEasyMathBPLibrary : public UBlueprintFunctionLibrary
 	static FVector EasyMathTranslateFunction(AActor* actor , FVector VecIn, FVector Source = FVector::ZeroVector);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Easy Math Rotate", Keywords = "EasyMath Translate"), Category = "EasyMath|Rotate")
-	static FRotator EasyMathRotateFunction(AActor* actor , FVector VecIn, FVector Source = FVector::ZeroVector);
+	static FVector EasyMathRotateFunction(AActor* actor , FVector VecIn, FVector Source = FVector::ZeroVector);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Easy Math Scale", Keywords = "EasyMath Translate"), Category = "EasyMath|Rotate")
 	static FVector EasyMathScaleFunction(AActor* actor , FVector VecIn, FVector Source = FVector(1,1,1));
